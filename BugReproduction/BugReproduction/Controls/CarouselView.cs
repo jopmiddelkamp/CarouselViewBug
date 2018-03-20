@@ -6,10 +6,12 @@ namespace BugReproduction.Controls
     {
         public CarouselView()
         {
+            Orientation = CarouselViewOrientation.Horizontal;
+
             ShowIndicators = true;
 
             // This causes the app to crash!
-            ShowArrows = true;
+            //ShowArrows = true;
 
             InterPageSpacing = 20;
         }
