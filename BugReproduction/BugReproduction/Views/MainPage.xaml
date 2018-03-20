@@ -4,29 +4,33 @@
              xmlns:controls="clr-namespace:BugReproduction.Controls;assembly=BugReproduction"
              x:Class="BugReproduction.Views.MainPage"
              Title="{Binding Title}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CarouselViewTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding ImageSrc}" HorizontalOptions="FillAndExpand" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2" />
+                    <BoxView BackgroundColor="AliceBlue" Opacity=".7" Grid.Row="1" Margin="0, 0, 0, 25" />
+                    <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Grid.Row="1" Margin="0, 10, 0, 35" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <StackLayout x:Name="WrapperStackLayout" Padding="20" Spacing="20">
-        <Label Text="Please swipe and select your building." Margin="0, 0, 0, 15" />
+        
+        <Label Text="Please swipe and select your building." />
 
-        <controls:CarouselView Orientation="Horizontal" ItemsSource="{Binding Buildings}" Position="{Binding SelectedBuildingIndex}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="{Binding ImageSrc}" HorizontalOptions="FillAndExpand" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2" />
-                        <BoxView BackgroundColor="AliceBlue" Opacity=".7" Grid.Row="1" Margin="0, 0, 0, 25" />
-                        <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Grid.Row="1" Margin="0, 10, 0, 35" />
-                    </Grid>
-                </DataTemplate>
-            </controls:CarouselView.ItemTemplate>
-        </controls:CarouselView>
-        <Button Text="Select building" Command="{Binding SelectBuildingCommand}" HorizontalOptions="FillAndExpand" />
+        <controls:CarouselView ItemsSource="{Binding Buildings}" Position="{Binding SelectedBuildingIndex}" ItemTemplate="{StaticResource CarouselViewTemplate}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+        <Button Text="Select building" Command="{Binding SelectBuildingCommand}" />
+
     </StackLayout>
 
 </ContentPage>
