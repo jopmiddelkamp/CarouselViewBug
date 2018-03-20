@@ -9,7 +9,6 @@
         <Label Text="Please swipe and select your building." Margin="0, 0, 0, 15" />
 
         <controls:CarouselView Orientation="Horizontal" ItemsSource="{Binding Buildings}" Position="{Binding SelectedBuildingIndex}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <!--<controls:CarouselView Orientation="Horizontal" ItemsSource="{Binding Buildings}" Position="{Binding SelectedBuildingIndex}" WidthRequest="{Binding ImageSize}" HeightRequest="{Binding ImageSize}" BackgroundColor="Red">-->
             <controls:CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
